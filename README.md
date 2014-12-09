@@ -1,8 +1,8 @@
 
 
-# FirstNode
+# SongAnalyzer
 
-
+This repository is meant to be my playground for Node.js and javascript stuff...
 
 ## Usage
 
@@ -14,7 +14,5 @@
 
 ### Tools
 
-Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
- ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
-
-Nodeclipse is free open-source project that grows with your contributions.
+Created with [Node.js](http://nodejs.org/) on [Locomotive](http://locomotivejs.org/)
+   
