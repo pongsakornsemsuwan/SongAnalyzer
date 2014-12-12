@@ -168,7 +168,7 @@ songsController.getKey = function() {
       });
     }
     catch(ex){
-      //this.error = 'unsupported chord';
+      this.myError = 'unsupported chord';
       this.render();
     }
 
