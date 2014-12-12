@@ -142,7 +142,7 @@ songsController.getKey = function() {
   this.title = 'Locomotive';
   this.chordList = null;
   this.key = null;
-  this.myError = null;
+  this.error = null;
 
   var chordString = this.param('chord');
   if(chordString != null){
@@ -168,7 +168,7 @@ songsController.getKey = function() {
       });
     }
     catch(ex){
-      this.myError = 'unsupported chord';
+      this.error = 'unsupported chord';
       this.render();
     }
 

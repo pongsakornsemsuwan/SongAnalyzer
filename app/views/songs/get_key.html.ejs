@@ -16,13 +16,13 @@
     </div>
 	<br/><br/>
 	
-	<% if(myError != null) { %>
+	<% if(error != null) { %>
 	<div>
-		<span class="error" style="color:red;"><%=myError%></span>
+		<span class="error" style="color:red;"><%=error%></span>
 	</div>
 	<% } %>
 	
-    <% if(chordList != null && myError == null){ %>
+    <% if(chordList != null && error == null){ %>
     <div>
       <span>Chord list = <%=chordList%></span><br/><br/>
       <span>Key = <%=key1%></span> <span>Compatibility : <%=compat1%></span><br/>
