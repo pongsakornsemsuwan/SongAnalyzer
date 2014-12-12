@@ -8,6 +8,7 @@
 module.exports = function routes() {
   this.root('songs#getKey');
   this.match('getkey','songs#getKey');
+  this.match('analyze','songs#analyze')
 
 
 }

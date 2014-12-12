@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Find the key of a song</title>
+    <link rel="stylesheet" href="/stylesheets/screen.css" />
+  </head>
+  <body>
+    <h1>Analyze chord progression</h1>
+
+    <div>
+      <span>submit a comma seperated chords e.g. D,A,Bm7,G</span>
+      <form method="GET" action="">
+        <input type="text" name="section1" /> <br/>
+        <input type="text" name="section2" /> <br/>
+        <input type="text" name="section3" /> <br/>
+        <input type="text" name="section4" /> <br/>
+        <input type="text" name="section5" /> <br/>
+        <input type="submit"/>
+      </form>
+    </div>
+	<br/><br/>
+
+    <% if(chordList != null ){ %>
+    <div>
+      <span>Chord list = <%=chordList%></span><br/><br/>
+      <span>Key = <%=key1%></span> <span>Compatibility : <%=compat1%></span><br/>
+      <span>Key = <%=key2%></span> <span>Compatibility : <%=compat2%></span><br/>
+      <span>Key = <%=key3%></span> <span>Compatibility : <%=compat3%></span><br/>
+    </div>
+    <% } %>
+
+  </body>
+</html>

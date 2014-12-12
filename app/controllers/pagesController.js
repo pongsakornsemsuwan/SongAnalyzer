@@ -1,5 +1,5 @@
 var locomotive = require('locomotive')
-  , Controller = locomotive.Controller;
+, Controller = locomotive.Controller;
 
 var pagesController = new Controller();
 
