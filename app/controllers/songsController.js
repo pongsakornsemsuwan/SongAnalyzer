@@ -145,7 +145,7 @@ songsController.getKey = function() {
   this.myError = null;
 
   var chordString = this.param('chord');
-  if(chordString !== null){
+  if(chordString != null){
 
     var chordArray = chordString.split(',');
 
@@ -275,7 +275,7 @@ songsController.analyze = function() {
   console.log('in songs#analyze')
   this.chordList = null;
   var section1 = this.param('section1');
-  if(section1 !== null){
+  if(section1 != null){
 
   }
   //var cC = new Chord('Cmaj7', ['C','E','G'], 'C','','maj7');
