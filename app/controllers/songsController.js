@@ -142,7 +142,7 @@ songsController.getKey = function() {
   this.title = 'Locomotive';
   this.chordList = null;
   this.key = null;
-  this.error = null;
+  this.myError = null;
 
   var chordString = this.param('chord');
   if(chordString !== null){
