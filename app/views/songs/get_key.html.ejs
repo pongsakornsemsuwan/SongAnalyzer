@@ -5,10 +5,14 @@
     <link rel="stylesheet" href="/stylesheets/screen.css" />
   </head>
   <body>
+  
+  	<% include ../include/menu.ejs %>
+  	
     <h1>Find the key of a song</h1>
 
     <div>
       <span>submit a comma seperated chords e.g. D,A,Bm7,G</span>
+      <br/><br/>
       <form method="GET" action="">
         <input type="text" name="chord" />
         <input type="submit"/>

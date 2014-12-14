@@ -69,49 +69,49 @@ chordMap.set('B7', new Chord('B7', ['B','D#','F#','A'],'B','','7'));
 chordMap.set('Bm', new Chord('Bm', ['B','D','F#'],'B','m'));
 chordMap.set('Bm7', new Chord('Bm7', ['B','D','F#','A'],'B','m','7'));
 
-chordMap.set('C#', new Chord('C#', ['C#','F','G#']));
-chordMap.set('C#maj7', new Chord('C#maj7', ['C#','F','G#','C']));
-chordMap.set('C#7', new Chord('C#7', ['C#','F','G#','B']));
-chordMap.set('C#m', new Chord('C#m', ['C#','E','G#']));
-chordMap.set('C#m7', new Chord('C#m7', ['C#','E','G#','B']));
+chordMap.set('C#', new Chord('C#', ['C#','F','G#'],'C#'));
+chordMap.set('C#maj7', new Chord('C#maj7', ['C#','F','G#','C'],'C#','','maj7'));
+chordMap.set('C#7', new Chord('C#7', ['C#','F','G#','B'],'C#','','7'));
+chordMap.set('C#m', new Chord('C#m', ['C#','E','G#']),'C#','m');
+chordMap.set('C#m7', new Chord('C#m7', ['C#','E','G#','B']),'C#','m','7');
 
-chordMap.set('D#', new Chord('D#', ['D#','G','A#']));
-chordMap.set('D#maj7', new Chord('D#maj7', ['D#','G','A#','D']));
-chordMap.set('D#7', new Chord('D#7', ['D#','G','A#','C#']));
-chordMap.set('D#m', new Chord('D#m', ['D#','F#','A#']));
-chordMap.set('D#m7', new Chord('D#m7', ['D#','F#','A#','C#']));
+chordMap.set('D#', new Chord('D#', ['D#','G','A#'],'D#'));
+chordMap.set('D#maj7', new Chord('D#maj7', ['D#','G','A#','D'],'D#','','maj7'));
+chordMap.set('D#7', new Chord('D#7', ['D#','G','A#','C#'],'D#','','7'));
+chordMap.set('D#m', new Chord('D#m', ['D#','F#','A#'],'D#','m'));
+chordMap.set('D#m7', new Chord('D#m7', ['D#','F#','A#','C#'],'D#','m','7'));
 
 //ACTUALLY F
-chordMap.set('E#', new Chord('E#', ['F','A','C']));
-chordMap.set('E#maj7', new Chord('E#maj7', ['F','A','C','E']));
-chordMap.set('E#7', new Chord('E#7', ['F','A','C','D#']));
-chordMap.set('E#m', new Chord('E#m', ['F','G#','C']));
-chordMap.set('E#m7', new Chord('E#m7', ['F','G#','C','D#']));
+chordMap.set('E#', new Chord('E#', ['F','A','C'],'E#'));
+chordMap.set('E#maj7', new Chord('E#maj7', ['F','A','C','E'],'E#','','maj7'));
+chordMap.set('E#7', new Chord('E#7', ['F','A','C','D#'],'E#','','7'));
+chordMap.set('E#m', new Chord('E#m', ['F','G#','C'],'E#','m'));
+chordMap.set('E#m7', new Chord('E#m7', ['F','G#','C','D#'],'E#','m','7'));
 
-chordMap.set('F#', new Chord('F#', ['F#','A#','C#']));
-chordMap.set('F#maj7', new Chord('F#maj7', ['F#','A#','C#','F']));
-chordMap.set('F#7', new Chord('F#7', ['F#','A#','C#','E']));
-chordMap.set('F#m', new Chord('F#m', ['F#','A','C#']));
-chordMap.set('F#m7', new Chord('F#m7', ['F#','A','C#','E']));
+chordMap.set('F#', new Chord('F#', ['F#','A#','C#'],'F#'));
+chordMap.set('F#maj7', new Chord('F#maj7', ['F#','A#','C#','F'],'F#','','maj7'));
+chordMap.set('F#7', new Chord('F#7', ['F#','A#','C#','E'],'F#','','7'));
+chordMap.set('F#m', new Chord('F#m', ['F#','A','C#'],'F#','m'));
+chordMap.set('F#m7', new Chord('F#m7', ['F#','A','C#','E'],'F#','m','7'));
 
-chordMap.set('G#', new Chord('G#', ['G#','C','D#']));
-chordMap.set('G#maj7', new Chord('G#maj7', ['G#','C','D#','G']));
-chordMap.set('G#7', new Chord('G#7', ['G#','C','D#','F#']));
-chordMap.set('G#m', new Chord('G#m', ['G#','B','D#']));
-chordMap.set('G#m7', new Chord('G#m7', ['G#','B','D#','F#']));
+chordMap.set('G#', new Chord('G#', ['G#','C','D#'],'G#'));
+chordMap.set('G#maj7', new Chord('G#maj7', ['G#','C','D#','G'],'G#','','7'));
+chordMap.set('G#7', new Chord('G#7', ['G#','C','D#','F#'],'G#','','7'));
+chordMap.set('G#m', new Chord('G#m', ['G#','B','D#'],'G#','m'));
+chordMap.set('G#m7', new Chord('G#m7', ['G#','B','D#','F#'],'G#','m','7'));
 
-chordMap.set('A#', new Chord('A#', ['A#','D','F']));
-chordMap.set('A#maj7', new Chord('A#maj7', ['A#','D','F','A']));
-chordMap.set('A#7', new Chord('A#7', ['A#','D','F','G#']));
-chordMap.set('A#m', new Chord('A#m', ['A#','C#','F']));
-chordMap.set('A#m7', new Chord('A#m7', ['A#','C#','F','G#']));
+chordMap.set('A#', new Chord('A#', ['A#','D','F'],'A#'));
+chordMap.set('A#maj7', new Chord('A#maj7', ['A#','D','F','A'],'A#','','maj7'));
+chordMap.set('A#7', new Chord('A#7', ['A#','D','F','G#'],'A#','','7'));
+chordMap.set('A#m', new Chord('A#m', ['A#','C#','F'],'A#','m'));
+chordMap.set('A#m7', new Chord('A#m7', ['A#','C#','F','G#'],'A#','m','7'));
 
 //ACTUALLY C
-chordMap.set('B#', new Chord('B#', ['C','E','G']));
-chordMap.set('B#maj7', new Chord('B#maj7', ['C','E','G','B']));
-chordMap.set('B#7', new Chord('B#7', ['C','E','G','A#']));
-chordMap.set('B#m', new Chord('B#m', ['C','D#','G']));
-chordMap.set('B#m7', new Chord('B#m7', ['C','D#','G','A#']));
+chordMap.set('B#', new Chord('B#', ['C','E','G'],'B#'));
+chordMap.set('B#maj7', new Chord('B#maj7', ['C','E','G','B'],'B#','','maj7'));
+chordMap.set('B#7', new Chord('B#7', ['C','E','G','A#'],'B#','','7'));
+chordMap.set('B#m', new Chord('B#m', ['C','D#','G'],'B#','m'));
+chordMap.set('B#m7', new Chord('B#m7', ['C','D#','G','A#'],'B#','m','7'));
 
 var flatToSharpMap = new Map();
 flatToSharpMap.set('Db','C#');
@@ -273,31 +273,231 @@ songsController.getKey = function() {
 
 songsController.analyze = function() {
   console.log('in songs#analyze')
-  this.chordList = null;
-  var section1 = this.param('section1');
-  if(section1 != null){
-
+  
+  //output for view
+  this.introOut = null;
+  this.verseOut = null;
+  this.prechorusOut = null;
+  this.chorusOut = null;
+  this.soloOut = null;
+  this.bridgeOut = null;
+  this.outroOut = null;
+  
+  //String input
+  var intro = this.param('intro');
+  var verse = this.param('verse');
+  var prechorus = this.param('prechorus');
+  var chorus = this.param('chorus');
+  var solo = this.param('solo');
+  var bridge = this.param('bridge');
+  var outro = this.param('outro');
+  
+  //whole song
+  var chordArray = new Array();
+  
+  //Array object for each section
+  var introArray = new Array();
+  var verseArray = new Array();
+  var prechorusArray = new Array();
+  var chorusArray = new Array();
+  var soloArray = new Array();
+  var bridgeArray = new Array();
+  var outroArray = new Array();
+  
+  //split string to array of each section and add them to chordArray
+  if(typeof intro != 'undefined' && intro.trim() !== '' ){
+    intro.split(',').forEach(function pushToArray(element){
+      introArray.push(element.trim());
+    });
+    chordArray = chordArray.concat(introArray);
   }
+  
+  if(typeof verse != 'undefined' && verse.trim() !== ''){
+    verse.split(',').forEach(function pushToArray(element){
+      verseArray.push(element.trim());
+    });
+    chordArray = chordArray.concat(verseArray);
+  }
+  if( typeof prechorus != 'undefined' && prechorus.trim() !== '' ){
+    prechorus.split(',').forEach(function pushToArray(element){
+      prechorusArray.push(element.trim());
+    });
+    chordArray = chordArray.concat(prechorusArray);
+  }
+  if( typeof chorus != 'undefined' && chorus.trim() !== '' ){
+    chorus.split(',').forEach(function pushToArray(element){
+      chorusArray.push(element.trim());
+    });
+    chordArray = chordArray.concat(chorusArray);
+  }
+  if( typeof solo != 'undefined' && solo.trim() !== '' ){
+    solo.split(',').forEach(function pushToArray(element){
+      soloArray.push(element.trim());
+    });
+    chordArray = chordArray.concat(soloArray);
+  }
+  if( typeof bridge != 'undefined' && bridge.trim() !== '' ){
+    bridge.split(',').forEach(function pushToArray(element){
+      bridgeArray.push(element.trim());
+    });
+    chordArray = chordArray.concat(bridgeArray);
+  }
+  if( typeof outro != 'undefined' && outro.trim() !== '' ){
+    outro.split(',').forEach(function pushToArray(element){
+      outroArray.push(element.trim());
+    });
+    chordArray = chordArray.concat(outroArray);
+  }
+  
+  console.log('chordArray' + chordArray);
+
+  //convert 
+  chordArray = chordArray.map( flatToSharp );
+
+  resetPoint();
+  
+  try{
+    chordArray.forEach(function(element){
+      breakTheChord(element);
+    });
+  }
+  catch(ex){
+    this.error = 'unsupported chord';
+    this.render();
+  }
+  
+  console.log('notespoool' + notesPool);
+  
+  allKey.forEach(function(key){
+    notesPool.forEach( function(element,index,array){
+      calculatePoints(element, key);
+    }) ;
+  });
+
+  var pointSet = new Set();
+  pointSet.add(keyCPoint);
+  pointSet.add(keyGPoint);
+  pointSet.add(keyDPoint);
+  pointSet.add(keyAPoint);
+  pointSet.add(keyEPoint);
+  pointSet.add(keyFSharpPoint);
+  pointSet.add(keyDbPoint);
+  pointSet.add(keyAbPoint);
+  pointSet.add(keyEbPoint);
+  pointSet.add(keyBbPoint);
+  pointSet.add(keyFPoint);
+  
+  var pointArray = [keyCPoint,keyGPoint,keyDPoint,keyAPoint,keyEPoint,
+                    keyFSharpPoint,keyDbPoint,keyAbPoint,keyEbPoint,
+                    keyBbPoint,keyFPoint];
+  var sortedPointArray = [keyCPoint,keyGPoint,keyDPoint,keyAPoint,keyEPoint,
+                          keyFSharpPoint,keyDbPoint,keyAbPoint,keyEbPoint,
+                          keyBbPoint,keyFPoint];
+
+  sortedPointArray.sort(function(a, b){return b-a});
+
+  var max = sortedPointArray[0];
+  var index = pointArray.indexOf(max);
+  //remove point after use
+  pointArray[index] = 0;
+  switch(index){
+  case 0: this.key1='C'; this.compat1=Number(keyCPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 1: this.key1='G'; this.compat1=Number(keyGPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 2: this.key1='D'; this.compat1=Number(keyDPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 3: this.key1='A'; this.compat1=Number(keyAPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 4: this.key1='E'; this.compat1=Number(keyEPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 5: this.key1='F#'; this.compat1=Number(keyFSharpPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 6: this.key1='Db'; this.compat1=Number(keyDbPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 7: this.key1='Ab'; this.compat1=Number(keyAbPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 8: this.key1='Eb'; this.compat1=Number(keyEbPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 9: this.key1='Bb'; this.compat1=Number(keyBbPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  case 10: this.key1='F'; this.compat1=Number(keyFPoint/notesPool.length*100).toFixed(2) + '%'; break;
+  default:this.key1='Other';
+  }
+  
+  
+  console.log('C Compatibility : ' + keyCPoint/notesPool.length*100 + '% , points = ' + keyCPoint);
+  console.log('G Compatibility : ' + keyGPoint/notesPool.length*100 + '% , points = ' + keyGPoint);
+  console.log('D Compatibility : ' + keyDPoint/notesPool.length*100 + '% , points = ' + keyDPoint);
+  console.log('A Compatibility : ' + keyAPoint/notesPool.length*100 + '% , points = ' + keyAPoint);
+  console.log('E Compatibility : ' + keyEPoint/notesPool.length*100 + '% , points = ' + keyEPoint);
+  console.log('F# Compatibility : ' + keyFSharpPoint/notesPool.length*100 + '% , points = ' + keyFSharpPoint);
+  console.log('Db Compatibility : ' + keyDbPoint/notesPool.length*100 + '% , points = ' + keyDbPoint);
+  console.log('Ab Compatibility : ' + keyAbPoint/notesPool.length*100 + '% , points = ' + keyAbPoint);
+  console.log('Eb Compatibility : ' + keyEbPoint/notesPool.length*100 + '% , points = ' + keyEbPoint);
+  console.log('Bb Compatibility : ' + keyBbPoint/notesPool.length*100 + '% , points = ' + keyBbPoint);
+  console.log('F Compatibility : ' + keyFPoint/notesPool.length*100 + '% , points = ' + keyFPoint);
+  
   //var cC = new Chord('Cmaj7', ['C','E','G'], 'C','','maj7');
   //var cDm = new Chord('Dm', ['D','F','A'], 'D','m');
 
-  var key = 'C'
-
-    var cC = chordMap.get('C');
+  var key = this.key1
+  var introOut;
+  
+  console.log('key=' + key);
+  
+  var cC = chordMap.get('C');
   var cDm = chordMap.get('Dm');
   var cEm = chordMap.get('Em');
   var cFmaj7 = chordMap.get('Fmaj7');
   var cG7 = chordMap.get('G7');
   var cAm = chordMap.get('Am');
 
-
-  console.log(cC.getRoman(key));
-  console.log(cDm.getRoman(key));
-  console.log(cEm.getRoman(key));
-  console.log(cFmaj7.getRoman(key));
-  console.log(cG7.getRoman(key));
-  console.log(cAm.getRoman(key));
+  console.log(introArray);
+  
+  if ( typeof intro != 'undefined' && intro.trim() !== '' ){
+    introArray = introArray.map( function(element){
+      return convertToRoman(element,key);
+    });
+  }
+  if ( typeof verse != 'undefined' && verse.trim() !== '' ){
+    verseArray = verseArray.map( function(element){
+      return convertToRoman(element,key);
+    });
+  }
+  if ( typeof prechorus != 'undefined' && prechorus.trim() !== '' ){
+    prechorusArray = prechorusArray.map( function(element){
+      return convertToRoman(element,key);
+    });
+  }
+  if ( typeof chorus != 'undefined' && chorus.trim() !== '' ){
+    chorusArray = chorusArray.map( function(element){
+      return convertToRoman(element,key);
+    });
+  }
+  if ( typeof solo != 'undefined' && solo.trim() !== '' ){
+    soloArray = soloArray.map( function(element){
+      return convertToRoman(element,key);
+    });
+  }
+  if ( typeof bridge != 'undefined' && bridge.trim() !== '' ){
+    bridgeArray = bridgeArray.map( function(element){
+      return convertToRoman(element,key);
+    });
+  }
+  if ( typeof outro != 'undefined' && outro.trim() !== '' ){
+    outroArray = outroArray.map( function(element){
+      return convertToRoman(element,key);
+    });
+  }
+  
+  console.log(introArray);
+  
+  this.introOut = introArray.toString();
+  this.verseOut = verseArray.toString();
+  this.prechorusOut = prechorusArray.toString();
+  this.chorusOut = chorusArray.toString();
+  this.soloOut = soloArray.toString();
+  this.bridgeOut = bridgeArray.toString();
+  this.outroOut = outroArray.toString();
+  
   this.render();
+}
+
+function convertToRoman(chord, key){
+  console.log(key);
+  console.log(chordMap.get(chord).getRoman(key));
+  return chordMap.get(chord).getRoman(key);
 }
 
 function resetPoint(){
