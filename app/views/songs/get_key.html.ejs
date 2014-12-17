@@ -20,18 +20,18 @@
     </div>
 	<br/><br/>
 	
-	<% if(error != null) { %>
+	<% if(myError != null) { %>
 	<div>
-		<span class="error" style="color:red;"><%=error%></span>
+		<span class="error" style="color:red;"><%=myError%></span>
 	</div>
 	<% } %>
 	
-    <% if(chordList != null && error == null){ %>
+    <% if(chordList != null && myError == null){ %>
     <div>
       <span>Chord list = <%=chordList%></span><br/><br/>
-      <span>Key = <%=key1%></span> <span>Compatibility : <%=compat1%></span><br/>
-      <span>Key = <%=key2%></span> <span>Compatibility : <%=compat2%></span><br/>
-      <span>Key = <%=key3%></span> <span>Compatibility : <%=compat3%></span><br/>
+      <span>Key = <%=keyCompatArray[0].key%></span> <span>Compatibility : <%=keyCompatArray[0].compat%></span><br/>
+      <span>Key = <%=keyCompatArray[1].key%></span> <span>Compatibility : <%=keyCompatArray[1].compat%></span><br/>
+      <span>Key = <%=keyCompatArray[2].key%></span> <span>Compatibility : <%=keyCompatArray[2].compat%></span><br/>
     </div>
     <% } %>
 
