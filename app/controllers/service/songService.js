@@ -132,7 +132,7 @@ var SongService = function(){
   
   console.log('songservice construct');
   
-} 
+};
 
 SongService.getKey = function( chordArray ){
   console.log('SongService.getKey' + chordArray);

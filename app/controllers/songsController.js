@@ -36,7 +36,9 @@ songsController.getKey = function() {
 
 songsController.analyze = function() {
   console.log('in songs#analyze');
-  
+
+  var context = this;
+
   //output for view
   this.introOut = null;
   this.verseOut = null;
@@ -111,53 +113,35 @@ songsController.analyze = function() {
   this.soloOut = soloArray.toString();
   this.bridgeOut = bridgeArray.toString();
   this.outroOut = outroArray.toString();
-  
-  var chordProgTree = new ChordProgTree();
-  chordProgTree.getTree("./app/controllers/chordprog.properties",this, render);
 
-  function render(tree,context){
+  var chordProgTree = new ChordProgTree("./app/controllers/chordprog.properties");
+  chordProgTree.loadProperties("./app/controllers/chordprog.properties", render);
+
+  function render(){
     //console.log(tree.model);
 
-    console.log(chordProgTree.getValue('I.V.X'));
+    var tree = chordProgTree.getTree();
+    console.log(tree);
 
-    var walkOption = {strategy : 'pre'};
-    var i = 0;
+    var startIndex = 0;
+    while(startIndex < introArray.length ){
+      console.log(startIndex);
+      var matchedArray = findLongestMatch(tree.model,introArray, startIndex);
 
-    var childrenNodeArray = tree.model.children;
-    console.log('1st' + childrenNodeArray);
-    var childrenArray = childrenNodeArray.map(function(element){return element.name});
-    var matchedArray = [];
-    var matchedNode;
-
-    yoyo(tree.model,0);
-
-    function yoyo(node, index){
-      //console.log(node);
-      if( node.children ) {
-        childrenNodeArray = node.children;
-        //console.log(childrenNodeArray);
-        childrenArray = childrenNodeArray.map(function (element) {
-          return element.name;
-        });
-
-        if (childrenArray.indexOf(introArray[index]) > -1) {
-          console.log('found at index' + childrenArray.indexOf(introArray[index]));
-          matchedArray.push(introArray[index]);
-
-          matchedNode = childrenNodeArray[childrenArray.indexOf(introArray[index])];
-
-          yoyo(matchedNode, index + 1)
-
-        } else {
-          return false;
+      //if not match at all, move to next chord.
+      if( matchedArray.length === 0 ){
+        startIndex++;
+      }else{
+        while(typeof chordProgTree.getValue(matchedArray.toString().replace( /,/g, '.')) === 'undefined'){
+          matchedArray.splice(matchedArray.length-1,1);
         }
-      } else {
-        return false;
-      }
-    }
 
-    console.log(matchedArray);
-    console.log();
+        startIndex += matchedArray.length;
+
+        console.log(matchedArray + ' match with' + chordProgTree.getValue(matchedArray.toString().replace( /,/g,'.')));
+      }
+
+    }
 
     context.render();
 
@@ -165,6 +149,36 @@ songsController.analyze = function() {
   //console.log(chordProgTree.model);
     
 };
+
+
+function findLongestMatch(node, sourceArray, index){
+  //console.log(node);
+  var matchedArray = [];
+
+  if( node.children ) {
+    childrenNodeArray = node.children;
+    //console.log(childrenNodeArray);
+    childrenArray = childrenNodeArray.map(function (element) {
+      return element.name;
+    });
+
+    if (childrenArray.indexOf(sourceArray[index]) > -1) {
+      console.log('found at index' + childrenArray.indexOf(sourceArray[index]));
+      matchedArray.push(sourceArray[index]);
+
+      matchedNode = childrenNodeArray[childrenArray.indexOf(sourceArray[index])];
+
+      return matchedArray.concat( findLongestMatch(matchedNode, sourceArray, index + 1) );
+
+    } else {
+      console.log('no match');
+      return [];
+    }
+  } else {
+    return [];
+  }
+}
+
 
 function pushToItsOwnArray(input, array){
   if(typeof input != 'undefined' && input.trim() !== '' ){
@@ -182,16 +196,6 @@ function weCameAsRoman(array,key) {
     return array;
   }
   return [];
-}
-
-function arraysAreIdentical(arr1, arr2){
-  if (arr1.length !== arr2.length) return false;
-  for (var i = 0, len = arr1.length; i < len; i++){
-    if (arr1[i] !== arr2[i]){
-      return false;
-    }
-  }
-  return true;
 }
 
 module.exports = songsController;
