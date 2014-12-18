@@ -18,7 +18,7 @@ Chord.prototype = {
       return anotherChord.name;
     },
     getRoman:function(key){
-      theArray = ['C','D','E','F','G','A','B'];
+      var theArray = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
       var index = theArray.indexOf(key);
       var distance = 1;
       while(theArray[index]!=this.root.substring(0,1)){
@@ -54,6 +54,6 @@ Chord.prototype = {
 
       return distance;
     }
-}
+};
 
 module.exports = Chord;

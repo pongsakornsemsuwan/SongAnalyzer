@@ -353,4 +353,12 @@ function calculatePoints (element, key) {
   }
 }
 
+function secretFunction(){
+  console.log('Shh... this is secret function');
+}
+
+SongService.goSecret = function(){
+  secretFunction();
+}
+
 module.exports = SongService;

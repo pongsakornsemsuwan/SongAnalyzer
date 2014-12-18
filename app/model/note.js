@@ -8,6 +8,6 @@ Note.prototype = {
   getFullName:function() {
     return this.name + this.octave;
   }
-}
+};
 
 module.exports = Note;

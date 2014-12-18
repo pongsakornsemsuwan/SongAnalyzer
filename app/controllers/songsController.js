@@ -14,7 +14,7 @@ console.log(nC3.getFullName());
 var songsController = new Controller();
 
 songsController.getKey = function() {
-  
+
   this.title = 'Locomotive';
   this.chordList = null;
   this.key = null;
@@ -32,10 +32,10 @@ songsController.getKey = function() {
     
   }
   this.render();
-}
+};
 
 songsController.analyze = function() {
-  console.log('in songs#analyze')
+  console.log('in songs#analyze');
   
   //output for view
   this.introOut = null;
@@ -46,35 +46,26 @@ songsController.analyze = function() {
   this.bridgeOut = null;
   this.outroOut = null;
   
-  //output for view
-  this.introIn = '';
-  this.verseIn = '';
-  this.prechorusIn = '';
-  this.chorusIn = '';
-  this.soloIn = '';
-  this.bridgeIn = '';
-  this.outroIn = '';
-  
   //String input
-  var intro = this.param('intro');
-  var verse = this.param('verse');
-  var prechorus = this.param('prechorus');
-  var chorus = this.param('chorus');
-  var solo = this.param('solo');
-  var bridge = this.param('bridge');
-  var outro = this.param('outro');
+  var intro = this.introIn = this.param('intro');
+  var verse = this.verseIn = this.param('verse');
+  var prechorus = this.prechorusIn = this.param('prechorus');
+  var chorus = this.chorusIn = this.param('chorus');
+  var solo = this.soloIn = this.param('solo');
+  var bridge = this.bridgeIn = this.param('bridge');
+  var outro = this.outroIn = this.param('outro');
   
   //whole song
-  var chordArray = new Array();
+  var chordArray = [];
   
   //Array object for each section
-  var introArray = new Array();
-  var verseArray = new Array();
-  var prechorusArray = new Array();
-  var chorusArray = new Array();
-  var soloArray = new Array();
-  var bridgeArray = new Array();
-  var outroArray = new Array();
+  var introArray = [];
+  var verseArray = [];
+  var prechorusArray = [];
+  var chorusArray = [];
+  var soloArray = [];
+  var bridgeArray = [];
+  var outroArray = [];
   
   //split string to array of each section and add them to chordArray
   
@@ -102,8 +93,6 @@ songsController.analyze = function() {
     chordArray = chordArray.concat(outroArray);
   
   var key = SongService.getKey(chordArray)[0].key;
-  
-  var introOut;
   
   console.log('key=' + key);
   
@@ -134,7 +123,7 @@ songsController.analyze = function() {
   }
   //console.log(chordProgTree.model);
     
-}
+};
 
 function pushToItsOwnArray(input, array){
   if(typeof input != 'undefined' && input.trim() !== '' ){
@@ -153,14 +142,7 @@ function weCameAsRoman(array,key) {
     });
     return array;
   }
-  return new Array();
-}
-
-
-function convertToRoman(chord, key){
-  console.log(key);
-  SongService.getChord(chord).getRoman(key);
-  return SongService.getChord(chord).getRoman(key);
+  return [];
 }
 
 module.exports = songsController;
