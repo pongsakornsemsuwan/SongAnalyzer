@@ -6,63 +6,68 @@
 
 
 TreeModel = require('tree-model');
+var properties = require('properties');
 
-function ChordProgTree() {
+function ChordProgTree(propertiesPath, controller, callback) {
+
 }
 
 ChordProgTree.prototype = {
     constructor:ChordProgTree,
-    getTree:function( propertiesPath, controller, callback ){
-      
-      options = {
-          path: true,
-          include: true,
-          namespaces : true,
-          sections: true
+    getTree:function(  propertiesPath, controller, callback ){
+        options = {
+            path: true,
+            include: true,
+            namespaces: true,
+            sections: true
         };
-      
-      var properties = require('properties');
-      
-      properties.parse (propertiesPath, options, function (error, p){
-        if (error) return console.error (error);
-        
-        var node = buildTree(p);
-        console.log(node.model);
-        
-        //instead of return node;, I have to call a callback function
-        //because Node.js do this in an asynchronous fashion. It does not wait for return.
-        callback(node, controller);
-        
-      });
+
+        properties.parse(propertiesPath, options, function (error, p) {
+            if (error) {
+                return console.error(error);
+            }
+
+            console.log('parseeeeeee');
+
+            node = buildTree(p);
+
+            //instead of return node;, I have to call a callback function
+            //because Node.js do this in an asynchronous fashion. It does not wait for return.
+            callback(node, controller);
+
+        });
+    },
+    getValue:function(key) {
+        return properties.key;
     }
 }
 
 //private functions, because we do not export it (if I understand it right)
 function buildTree(p){
-  
-  var tree = new TreeModel();
-  var root = tree.parse({name: 'root'});
-  
-  for (i in p){
-    if (typeof(p[i]) === 'object'  ){
-     // console.log( i,p[i])
-      root.addChild( buildChildren(i,p[i]) );
-    } 
-    
-  }
-  return root;
+
+    var tree = new TreeModel();
+    var root = tree.parse({name: 'root'});
+
+    for (i in p){
+        if (typeof(p[i]) === 'object'  ){
+            // console.log( i,p[i])
+            root.addChild( buildChildren(i,p[i]) );
+        }
+
+    }
+    return root;
 }
 
 function buildChildren(i,p){
-  var tree = new TreeModel();
-  var node = tree.parse({name: i}); 
-  for (i in p){
-    if (typeof(p[i]) === 'object' ){
-      //console.log( i,p[i])
-      node.addChild( buildChildren(i,p[i]) );
-    } 
-  }
-  return node;
+    var tree = new TreeModel();
+    var node = tree.parse({name: i});
+    for (i in p){
+        if (typeof(p[i]) === 'object' ){
+            //console.log( i,p[i])
+            node.addChild( buildChildren(i,p[i]) );
+        }
+    }
+    return node;
 }
-  
+
 module.exports = ChordProgTree;

@@ -359,6 +359,6 @@ function secretFunction(){
 
 SongService.goSecret = function(){
   secretFunction();
-}
+};
 
 module.exports = SongService;

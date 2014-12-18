@@ -104,8 +104,6 @@ songsController.analyze = function() {
   bridgeArray = weCameAsRoman( bridgeArray, key);
   outroArray = weCameAsRoman( outroArray, key);
   
-  console.log(introArray);
-  
   this.introOut = introArray.toString();
   this.verseOut = verseArray.toString();
   this.prechorusOut = prechorusArray.toString();
@@ -115,11 +113,54 @@ songsController.analyze = function() {
   this.outroOut = outroArray.toString();
   
   var chordProgTree = new ChordProgTree();
-  chordProgTree.getTree("./app/controllers/chordprog.properties", this, render);
+  chordProgTree.getTree("./app/controllers/chordprog.properties",this, render);
 
   function render(tree,context){
-    console.log(tree.model);
+    //console.log(tree.model);
+
+    console.log(chordProgTree.getValue('I.V.X'));
+
+    var walkOption = {strategy : 'pre'};
+    var i = 0;
+
+    var childrenNodeArray = tree.model.children;
+    console.log('1st' + childrenNodeArray);
+    var childrenArray = childrenNodeArray.map(function(element){return element.name});
+    var matchedArray = [];
+    var matchedNode;
+
+    yoyo(tree.model,0);
+
+    function yoyo(node, index){
+      //console.log(node);
+      if( node.children ) {
+        childrenNodeArray = node.children;
+        //console.log(childrenNodeArray);
+        childrenArray = childrenNodeArray.map(function (element) {
+          return element.name;
+        });
+
+        if (childrenArray.indexOf(introArray[index]) > -1) {
+          console.log('found at index' + childrenArray.indexOf(introArray[index]));
+          matchedArray.push(introArray[index]);
+
+          matchedNode = childrenNodeArray[childrenArray.indexOf(introArray[index])];
+
+          yoyo(matchedNode, index + 1)
+
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+    console.log(matchedArray);
+    console.log();
+
     context.render();
+
   }
   //console.log(chordProgTree.model);
     
@@ -136,13 +177,21 @@ function pushToItsOwnArray(input, array){
 function weCameAsRoman(array,key) {
   if ( array.length !== 0 ){
     array = array.map( function(element){
-      console.log('elementtttttttt' + element);
-      console.log(SongService.getChord(element).getRoman(key));
       return SongService.getChord(element).getRoman(key);
     });
     return array;
   }
   return [];
+}
+
+function arraysAreIdentical(arr1, arr2){
+  if (arr1.length !== arr2.length) return false;
+  for (var i = 0, len = arr1.length; i < len; i++){
+    if (arr1[i] !== arr2[i]){
+      return false;
+    }
+  }
+  return true;
 }
 
 module.exports = songsController;
