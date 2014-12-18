@@ -49,7 +49,7 @@ chordMap.set('Bm7', new Chord('Bm7', ['B','D','F#','A'],'B','m','7'));
 chordMap.set('C#', new Chord('C#', ['C#','F','G#'],'C#'));
 chordMap.set('C#maj7', new Chord('C#maj7', ['C#','F','G#','C'],'C#','','maj7'));
 chordMap.set('C#7', new Chord('C#7', ['C#','F','G#','B'],'C#','','7'));
-chordMap.set('C#m', new Chord('C#m', ['C#','E','G#']),'C#','m');
+chordMap.set('C#m', new Chord('C#m', ['C#','E','G#'],'C#','m'));
 chordMap.set('C#m7', new Chord('C#m7', ['C#','E','G#','B']),'C#','m','7');
 
 chordMap.set('D#', new Chord('D#', ['D#','G','A#'],'D#'));
