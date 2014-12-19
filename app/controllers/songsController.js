@@ -139,12 +139,12 @@ songsController.analyze = function() {
 
 
 function findLongestMatch(node, sourceArray, index){
-  //console.log(node);
+  console.log(node);
   var matchedArray = [];
 
   if( node.children ) {
     var childrenNodeArray = node.children;
-    //console.log(childrenNodeArray);
+    console.log(childrenNodeArray);
     var childrenArray = childrenNodeArray.map(function (element) {
       return element.name;
     });
@@ -155,6 +155,7 @@ function findLongestMatch(node, sourceArray, index){
 
       var matchedNode = childrenNodeArray[childrenArray.indexOf(sourceArray[index])];
 
+      console.log('here');
       return matchedArray.concat( findLongestMatch(matchedNode, sourceArray, index + 1) );
 
     } else {
@@ -207,7 +208,7 @@ function createProgressionChunk(sourceArray, chordProgTree) {
 
     console.log(startIndex);
     var matchedArray = findLongestMatch(tree.model, sourceArray, startIndex);
-
+    console.log('yoyo' + matchedArray);
     //if not match at all, move to next chord.
     if (matchedArray.length === 0) {
       console.log(sourceArray[startIndex] + ' not match');
@@ -217,20 +218,28 @@ function createProgressionChunk(sourceArray, chordProgTree) {
       startIndex++;
 
     } else {
-      while (typeof chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.')) === 'undefined') {
+      while (typeof chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.')) === 'undefined' && matchedArray.length > 0 ) {
+        console.log(matchedArray.length);
         matchedArray.splice(matchedArray.length - 1, 1);
       }
 
-      startIndex += matchedArray.length;
+      if( matchedArray.length === 0){
+        chordProgMap[outputIndex] = {name:sourceArray[startIndex],description:''};
+        //chordProgMap[sourceArray[startIndex]] = '';
+        startIndex++;
+        outputIndex++;
+      } else {
 
-      var chordProgDesc = chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.'));
-      console.log(matchedArray + ' match with' + chordProgDesc);
+        var chordProgDesc = chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.'));
+        console.log(matchedArray + ' match with' + chordProgDesc);
 
-      var myString = matchedArray.toString();
+        var myString = matchedArray.toString();
 
-      chordProgMap[outputIndex] = {name:myString, description:chordProgDesc};
-      outputIndex++;
-      //chordProgMap[myString] = chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.'));
+        chordProgMap[outputIndex] = {name: myString, description: chordProgDesc};
+
+        startIndex += matchedArray.length;
+        outputIndex++;
+      }
     }
   }
 
