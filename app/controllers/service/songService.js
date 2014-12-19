@@ -290,7 +290,8 @@ function resetPoint(){
 function breakTheChord (chord){
 
   try{
-    console.log('processing chord ' + chord + ',break to ' + chordMap.get(chord).getNotes());
+    console.log('processing chord ' + chord);
+    console.log(',break to ' + chordMap.get(chord).getNotes());
     var tmpChord = chordMap.get(chord);
     tmpChord.getNotes().forEach(function(element,index,array){
       notesPool.push(element);
@@ -302,9 +303,6 @@ function breakTheChord (chord){
 }
 
 function flatToSharp (chord){
-  
-  console.log('flatToSHarp' );
-  
   if(chord.substring(1,2) === 'b'){
     var flatChord = chord.substring(0,2);
     console.log(flatToSharpMap.get(flatChord) + chord.substring(2) );

@@ -12,13 +12,76 @@
       <span>submit a comma seperated chords e.g. D,A,Bm7,G</span>
       <form method="GET" action="">
       	<br/>
-        Intro : <input type="text" name="intro" value="<%=introIn%>" /> <span><%=introOut%></span> <br/><br/>
-        Verse : <input type="text" name="verse" value="<%=verseIn%>" /> <span><%=verseOut%></span> <br/><br/>
-        Pre-chorus : <input type="text" name="prechorus" value="<%=prechorusIn%>" /> <span><%=prechorusOut%></span> <br/><br/>
-        Chorus : <input type="text" name="chorus" value="<%=chorusIn%>" /> <span><%=chorusOut%></span> <br/><br/>
-        Solo : <input type="text" name="solo" value="<%=soloIn%>" /> <span><%=soloOut%></span> <br/><br/>
-        Bridge : <input type="text" name="bridge" value="<%=bridgeIn%>" /> <span><%=bridgeOut%></span> <br/><br/>
-        Outro : <input type="text" name="outro" value="<%=outroIn%>" /> <span><%=outroOut%></span> <br/><br/> 
+        Intro : <input type="text" name="intro" value="<%=introIn%>" />
+          <% for(k in introOut){ %>
+            <% if(introOut[k].description !== '') { %>
+              <a href="#"><span title="<%=introOut[k].description%>" >
+                <%=introOut[k].name%></span></a>
+            <% } else { %>
+              <span> <%=introOut[k].name %></span>
+            <% } %>
+          <% }%>
+        <br/><br/>
+        Verse : <input type="text" name="verse" value="<%=verseIn%>" />
+          <% for(k in verseOut){ %>
+            <% if(verseOut[k].description !== '') { %>
+              <a href="#"><span title="<%=verseOut[k].description%>" >
+                <%=verseOut[k].name%></span></a>
+            <% } else { %>
+              <span> <%=verseOut[k].name %></span>
+            <% } %>
+          <% } %>
+        <br/><br/>
+        Pre-chorus : <input type="text" name="prechorus" value="<%=prechorusIn%>" />
+          <% for(k in prechorusOut){ %>
+            <% if(prechorusOut[k].description !== '') { %>
+              <a href="#"><span title="<%=prechorusOut[k].description%>" >
+                <%=prechorusOut[k].name%></span></a>
+              <% } else { %>
+              <span> <%=prechorusOut[k].name %></span>
+            <% } %>
+          <% } %>
+        <br/><br/>
+        Chorus : <input type="text" name="chorus" value="<%=chorusIn%>" />
+        <% for(k in chorusOut){ %>
+        <% if(chorusOut[k].description !== '') { %>
+        <a href="#"><span title="<%=chorusOut[k].description%>" >
+                <%=chorusOut[k].name%></span></a>
+        <% } else { %>
+        <span> <%=chorusOut[k].name %></span>
+        <% } %>
+        <% } %>
+        <br/><br/>
+        Solo : <input type="text" name="solo" value="<%=soloIn%>" />
+        <% for(k in soloOut){ %>
+        <% if(soloOut[k].description !== '') { %>
+        <a href="#"><span title="<%=soloOut[k].description%>" >
+                <%=soloOut[k].name%></span></a>
+        <% } else { %>
+        <span> <%=soloOut[k].name %></span>
+        <% } %>
+        <% } %>
+        <br/><br/>
+        Bridge : <input type="text" name="bridge" value="<%=bridgeIn%>" />
+        <% for(k in bridgeOut){ %>
+        <% if(bridgeOut[k].description !== '') { %>
+        <a href="#"><span title="<%=bridgeOut[k].description%>" >
+                <%=bridgeOut[k].name%></span></a>
+        <% } else { %>
+        <span> <%=bridgeOut[k].name %></span>
+        <% } %>
+        <% } %>
+        <br/><br/>
+        Outro : <input type="text" name="outro" value="<%=outroIn%>" />
+        <% for(k in outroOut){ %>
+        <% if(outroOut[k].description !== '') { %>
+        <a href="#"><span title="<%=outroOut[k].description%>" >
+                <%=outroOut[k].name%></span></a>
+        <% } else { %>
+        <span> <%=outroOut[k].name %></span>
+        <% } %>
+        <% } %>
+        <br/><br/>
         <input type="submit"/>
       </form>
     </div>

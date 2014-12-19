@@ -39,23 +39,15 @@ songsController.analyze = function() {
 
   var context = this;
 
-  //output for view
-  this.introOut = null;
-  this.verseOut = null;
-  this.prechorusOut = null;
-  this.chorusOut = null;
-  this.soloOut = null;
-  this.bridgeOut = null;
-  this.outroOut = null;
-  
   //String input
-  var intro = this.introIn = this.param('intro');
-  var verse = this.verseIn = this.param('verse');
-  var prechorus = this.prechorusIn = this.param('prechorus');
-  var chorus = this.chorusIn = this.param('chorus');
-  var solo = this.soloIn = this.param('solo');
-  var bridge = this.bridgeIn = this.param('bridge');
-  var outro = this.outroIn = this.param('outro');
+  //var intro = this.introIn = this.param('intro');
+  var intro = this.introIn = this.getParam(this, 'intro', '');
+  var verse = this.verseIn = this.getParam(this, 'verse', '');
+  var prechorus = this.prechorusIn = this.getParam(this, 'prechorus', '');
+  var chorus = this.chorusIn = this.getParam(this, 'chorus', '');
+  var solo = this.soloIn = this.getParam(this, 'solo', '');
+  var bridge = this.bridgeIn = this.getParam(this, 'bridge', '');
+  var outro = this.outroIn = this.getParam(this, 'outro', '');
   
   //whole song
   var chordArray = [];
@@ -120,34 +112,29 @@ songsController.analyze = function() {
   function render(){
     //console.log(tree.model);
 
-    var tree = chordProgTree.getTree();
-    console.log(tree);
+    context.introOut = createProgressionChunk(introArray, chordProgTree);
+    context.verseOut = createProgressionChunk(verseArray, chordProgTree);
+    context.prechorusOut = createProgressionChunk(prechorusArray, chordProgTree);
+    context.chorusOut = createProgressionChunk(chorusArray, chordProgTree);
+    context.soloOut = createProgressionChunk(soloArray, chordProgTree);
+    context.bridgeOut = createProgressionChunk(bridgeArray, chordProgTree);
+    context.outroOut = createProgressionChunk(outroArray, chordProgTree);
 
-    var startIndex = 0;
-    while(startIndex < introArray.length ){
-      console.log(startIndex);
-      var matchedArray = findLongestMatch(tree.model,introArray, startIndex);
+    console.log('====introMap====');
 
-      //if not match at all, move to next chord.
-      if( matchedArray.length === 0 ){
-        startIndex++;
-      }else{
-        while(typeof chordProgTree.getValue(matchedArray.toString().replace( /,/g, '.')) === 'undefined'){
-          matchedArray.splice(matchedArray.length-1,1);
-        }
+    for(var k in context.introOut){
 
-        startIndex += matchedArray.length;
+      console.log('k=' + k + ':' + context.introOut[k].name + ':' + context.introOut[k].description);
 
-        console.log(matchedArray + ' match with' + chordProgTree.getValue(matchedArray.toString().replace( /,/g,'.')));
-      }
+    }
+    console.log('====verseMap====');
+    for(var k in context.verseOut){
 
+      console.log('k=' + k + ':' + context.verseOut[k].name + ',' + context.verseOut[k].description);
     }
 
     context.render();
-
   }
-  //console.log(chordProgTree.model);
-    
 };
 
 
@@ -156,9 +143,9 @@ function findLongestMatch(node, sourceArray, index){
   var matchedArray = [];
 
   if( node.children ) {
-    childrenNodeArray = node.children;
+    var childrenNodeArray = node.children;
     //console.log(childrenNodeArray);
-    childrenArray = childrenNodeArray.map(function (element) {
+    var childrenArray = childrenNodeArray.map(function (element) {
       return element.name;
     });
 
@@ -166,7 +153,7 @@ function findLongestMatch(node, sourceArray, index){
       console.log('found at index' + childrenArray.indexOf(sourceArray[index]));
       matchedArray.push(sourceArray[index]);
 
-      matchedNode = childrenNodeArray[childrenArray.indexOf(sourceArray[index])];
+      var matchedNode = childrenNodeArray[childrenArray.indexOf(sourceArray[index])];
 
       return matchedArray.concat( findLongestMatch(matchedNode, sourceArray, index + 1) );
 
@@ -181,7 +168,8 @@ function findLongestMatch(node, sourceArray, index){
 
 
 function pushToItsOwnArray(input, array){
-  if(typeof input != 'undefined' && input.trim() !== '' ){
+  console.log('input' + input);
+  if(input!==null && input.trim() !== '' ){
     input.split(',').forEach(function pushToArray(element){
       array.push(element.trim());
     });
@@ -196,6 +184,57 @@ function weCameAsRoman(array,key) {
     return array;
   }
   return [];
+}
+
+songsController.getParam = function( context, param, def){
+  console.log('param' + context.param(param));
+  if(typeof context.param( param ) !== 'undefined'){
+    return context.param( param );
+  }else{
+    return def;
+  }
+};
+
+function createProgressionChunk(sourceArray, chordProgTree) {
+
+  var tree = chordProgTree.getTree();
+
+  var chordProgMap = [];
+  var startIndex = 0;
+  var outputIndex = 0;
+
+  while (startIndex < sourceArray.length) {
+
+    console.log(startIndex);
+    var matchedArray = findLongestMatch(tree.model, sourceArray, startIndex);
+
+    //if not match at all, move to next chord.
+    if (matchedArray.length === 0) {
+      console.log(sourceArray[startIndex] + ' not match');
+      chordProgMap[outputIndex] = {name:sourceArray[startIndex],description:''};
+      //chordProgMap[sourceArray[startIndex]] = '';
+      outputIndex++;
+      startIndex++;
+
+    } else {
+      while (typeof chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.')) === 'undefined') {
+        matchedArray.splice(matchedArray.length - 1, 1);
+      }
+
+      startIndex += matchedArray.length;
+
+      var chordProgDesc = chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.'));
+      console.log(matchedArray + ' match with' + chordProgDesc);
+
+      var myString = matchedArray.toString();
+
+      chordProgMap[outputIndex] = {name:myString, description:chordProgDesc};
+      outputIndex++;
+      //chordProgMap[myString] = chordProgTree.getValue(matchedArray.toString().replace(/,/g, '.'));
+    }
+  }
+
+  return chordProgMap;
 }
 
 module.exports = songsController;
